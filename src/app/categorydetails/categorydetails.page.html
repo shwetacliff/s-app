@@ -1,0 +1,57 @@
+<ion-header>
+  <div class="headWrap">
+    <div class="logoWrap"><div class="logo"></div></div>
+    <div class="insWrap">
+      <div class="iconB"><a href="home"><img src="/assets/icon/icon-home.png" /></a></div>
+
+        <div class="searchB">
+          <div class="searchB-l"><input type="text" [(ngModel)]="search" class="sInput" placeholder="Search"></div>
+          <div class="searchB-r"><button type="submit" class="searchBtn" (click)="searchPost()"></button></div>
+        </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <nav>
+    <ul>
+      <li><a href="home" class="active">RECENT POST</a></li>
+      <li><a href="category">CATEGORY</a></li>
+    </ul>
+  </nav>
+  <section class="postlist">
+    <ul>
+
+      <li *ngFor="let d of localData | paginate: { itemsPerPage: 4, currentPage: p }" (click)='getPostById(d.id,d.cat_id);'>
+        <h1>{{d.category_name}}</h1>
+        <article>
+
+            <!-- <span *ngFor="let data of data._embedded['wp:featuredmedia']">  <img src="{{ data.source_url}}" /></span>-->
+
+            <!-- <span [innerHTML]="d.imageurl"> </span>-->
+            <img src="{{d.imageurl}}" />
+            <div class="articleCont">
+              <p>{{d.title}}</p>
+              <!--  <p><span [innerHTML]="d.content.rendered"></span></p>-->
+
+              <!-- <p>{{date}} / <span *ngFor="let data of d._embedded.author">{{ d.name}} </span></p>-->
+              <p>{{date}} / {{d.author}}</p>
+
+
+            </div>
+
+        </article>
+      </li>
+      <pagination-controls (pageChange)="p = $event" *ngIf="hidePagination" ></pagination-controls>
+    </ul>
+  </section>
+
+  <!--<div class="viewallB">
+    <ion-input [(ngModel)]="tvalue" type="hidden" style="display: none;"></ion-input>
+    <button class="viewABtn" *ngIf="hideButton" (click)='getAllPost();'>View All Post</button>
+
+  </div>-->
+
+
+</ion-content>

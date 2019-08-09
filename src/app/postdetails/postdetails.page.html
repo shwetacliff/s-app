@@ -1,0 +1,44 @@
+<ion-header>
+  <div class="headWrap">
+    <div class="logoWrap">
+      <div class="logo"></div>
+    </div>
+    <div class="insWrap">
+      <div class="iconB"><a href="home"><img src="/assets/icon/icon-home.png" /></a></div>
+      <div class="searchB">
+        <div class="searchB">
+          <div class="searchB-l"><input type="text" [(ngModel)]="search" class="sInput" placeholder="Search"></div>
+          <div class="searchB-r"><button type="submit" class="searchBtn" (click)="searchPost()"></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="backNavB">
+    <div class="backBtn"><a href="home"></a></div>
+    <div class="rightHeading">{{localData.post_name}}</div>
+  </div>
+  <section class="articlePage">
+    <h2>{{localData.post_title}}</h2>
+    <div class="articleImg">
+      <img src="/assets/icon/vivekanand -quotes.jpg" />
+    </div>
+    <div class="articleTxt">
+      <span [innerHTML]="localData.post_content"></span>
+    </div>
+
+  </section>
+  <footer>
+    <ul>
+      <li><a href="#">Previous</a></li>
+      <li><a href="#">Next</a></li>
+    </ul>
+  </footer>
+</ion-content>
+
+<!--  {{localData.post_content}}-->
+
+
+
